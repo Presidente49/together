@@ -1,0 +1,80 @@
+{
+  "v": 3,
+  "layout": "files",
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-09-28T07:33:15Z"
+  },
+  "title": "GatorBait Media",
+  "namespace": "GatorBait",
+  "libraries": [],
+  "sections": {},
+  "groups": [
+    "Logos",
+    "Photography"
+  ],
+  "assetGroups": {
+    "Logos": {
+      "name": "Logos",
+      "tile": "l",
+      "order": [
+        "gatorbait-wordmark.webp"
+      ],
+      "files": {
+        "gatorbait-wordmark.webp": {
+          "name": "gatorbait-wordmark.webp",
+          "blob": "58de01033dc16634cfc4edd76d5ad335",
+          "size": 200074,
+          "type": "image/webp"
+        }
+      }
+    },
+    "Photography": {
+      "name": "Photography",
+      "tile": "m",
+      "order": [
+        "the-promise-podium.webp",
+        "team-entrance-swamp.webp",
+        "auburn-sideline-celebration.webp",
+        "locker-room-portrait.webp"
+      ],
+      "files": {
+        "the-promise-podium.webp": {
+          "name": "the-promise-podium.webp",
+          "blob": "6bd4c73a7882b769a6ee908f6faa84f2",
+          "size": 23356,
+          "type": "image/webp"
+        },
+        "team-entrance-swamp.webp": {
+          "name": "team-entrance-swamp.webp",
+          "blob": "840653ffced61922143f76aa5a41269a",
+          "size": 115462,
+          "type": "image/webp"
+        },
+        "auburn-sideline-celebration.webp": {
+          "name": "auburn-sideline-celebration.webp",
+          "blob": "b5a29593f7960a1b804451ce33a4f71f",
+          "size": 79210,
+          "type": "image/webp"
+        },
+        "locker-room-portrait.webp": {
+          "name": "locker-room-portrait.webp",
+          "blob": "7e4517980748ff091470e0c4aad9677c",
+          "size": 37682,
+          "type": "image/webp"
+        }
+      }
+    }
+  },
+  "blobs": {},
+  "docs": {
+    "readme": "project/README.md",
+    "sections": []
+  },
+  "lastChange": {
+    "by": "Brenden Martin",
+    "at": "2026-09-28T07:33:15Z",
+    "via": "GitHub · Presidente49/gatorbait-media-redesign@d696498",
+    "note": "Extracted from the live GatorBait site CSS, docs and brand assets: 30 colors, 23 type styles, 14 components."
+  }
+}

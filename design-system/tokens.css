@@ -1,0 +1,258 @@
+/* Generated from tokens.json by tools/build_tokens_css.py. Do not edit by hand. */
+
+@font-face {
+  font-family: "Barlow";
+  src: url("fonts/Barlow-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Barlow";
+  src: url("fonts/Barlow-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Barlow";
+  src: url("fonts/Barlow-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Barlow";
+  src: url("fonts/Barlow-800.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root, [data-theme="light"] {
+  --paper: #fffdf9;
+  --paper-white: #ffffff;
+  --stone: #f0eee8;
+  --photo-well: #edf0f3;
+  --wash: #f4f6f9;
+  --navy: #11274a;
+  --navy-deep: #08132f;
+  --on-navy: var(--paper-white);
+  --ink-body: #24344b;
+  --slate: #4b5666;
+  --slate-meta: #586475;
+  --slate-caption: #657080;
+  --slate-ui: #667085;
+  --gator-blue: #0021a5;
+  --orange: #e84b10;
+  --gator-orange: #fa4616;
+  --orange-text: #ba3c0c;
+  --orange-focus: #db4c16;
+  --peach: #ffad86;
+  --peach-focus: #ffb49e;
+  --rule: #c5c9ce;
+  --rule-soft: #cad0d5;
+  --hairline: #d9dce1;
+  --hairline-cool: #d6dce4;
+  --line: #d9dee7;
+  --plan-line: #cdd4dd;
+  --shell-line: #dfe4ec;
+  --drawer-line: #e4e8ef;
+  --control-line: #b8c1d0;
+  --scrim: rgba(8, 19, 47, 0.56);
+  --shadow-shell: 0 3px 12px rgba(8, 19, 47, 0.08);
+  --shadow-drawer: -18px 0 48px rgba(8, 19, 47, 0.22);
+}
+
+:root {
+  --font-display: "Barlow", Arial, Helvetica, sans-serif;
+  --font-copy: "Barlow", Arial, Helvetica, sans-serif;
+  --font-ui: "Barlow", Arial, Helvetica, sans-serif;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-14: 14px;
+  --space-16: 16px;
+  --space-18: 18px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-32: 32px;
+  --space-36: 36px;
+  --radius-0: 0;
+  --radius-bar: 2px;
+  --radius-circle: 50%;
+  --border-1: 1px;
+  --border-2: 2px;
+  --border-3: 3px;
+  --border-4: 4px;
+  --measure-page: 1240px;
+  --measure-magazine: 1184px;
+  --measure-article: 940px;
+  --measure-form: 640px;
+  --measure-deck: 70ch;
+  --tap-target: 44px;
+  --logo-width: 250px;
+  --bp-tablet: 1100px;
+  --bp-phone: 820px;
+  --bp-small: 520px;
+  --bp-compact: 420px;
+  --bp-tiny: 360px;
+  --ratio-lead: 4 / 5;
+  --ratio-story: 16 / 9;
+  --ratio-card: 16 / 10;
+  --ratio-cover: 4 / 3;
+  --ratio-thumb: 1 / 1;
+  --ratio-logo: 900 / 241;
+}
+
+.tv-title {
+  font-family: var(--font-display);
+  font-size: 46px;
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.lead-headline {
+  font-family: var(--font-display);
+  font-size: 36px;
+  line-height: 1.07;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+.page-title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+.panel-headline {
+  font-family: var(--font-display);
+  font-size: 31px;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+.band-headline {
+  font-family: var(--font-display);
+  font-size: 29px;
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+.story-headline {
+  font-family: var(--font-display);
+  font-size: 23px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+.card-headline {
+  font-family: var(--font-display);
+  font-size: 21px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+.wire-headline {
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+.article-body {
+  font-family: var(--font-copy);
+  font-size: 17px;
+  line-height: 1.68;
+  font-weight: 400;
+}
+.deck {
+  font-family: var(--font-copy);
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+.body-small {
+  font-family: var(--font-copy);
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+.card-dek {
+  font-family: var(--font-copy);
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+.plan-price {
+  font-family: var(--font-ui);
+  font-size: 34px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.drawer-link {
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.15;
+  font-weight: 800;
+}
+.button-large {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 700;
+}
+.nav {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+.read-link {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 700;
+}
+.menu-trigger {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.kicker {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.meta {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+.edition {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  line-height: 1.5;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.caption {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  line-height: 1.5;
+  font-weight: 400;
+}

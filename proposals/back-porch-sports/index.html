@@ -1,0 +1,621 @@
+<title>The Porch, Fully Lit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Geist+Mono:wght@500;700&display=swap">
+<style>
+  /* Back Porch Sports palette, taken from backporchsports.com/styles.css.
+     One deliberate look: the porch after dark. */
+  :root {
+    color-scheme: dark;
+    --espresso: #1d120d;
+    --night: #160d08;
+    --chocolate: #2b1b13;
+    --timber: #3b2a21;
+    --ink: #241711;
+    --orange: #c65f2b;
+    --orange-text: #df7741;
+    --cream: #eee4d1;
+    --porch-cream: #f1eadc;
+    --cream-dim: rgba(241, 234, 220, .72);
+    --cream-faint: rgba(241, 234, 220, .14);
+    --gold: #d6a84d;
+    --gold-soft: #d8b86a;
+    --display: "Anton", Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    --serif: Georgia, "Times New Roman", serif;
+    --mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    --gutter: clamp(16px, 5vw, 64px);
+    --measure: 1180px;
+  }
+  html { background: var(--espresso); scroll-behavior: smooth; }
+  body {
+    background: var(--espresso);
+    color: var(--porch-cream);
+    font: 400 1.08rem/1.65 var(--serif);
+    padding-inline: 0;
+  }
+  * { box-sizing: border-box; }
+  a { color: var(--orange-text); text-underline-offset: 4px; }
+  :focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
+  .wrap { max-width: var(--measure); margin: 0 auto; padding-inline: var(--gutter); }
+
+  .kicker {
+    font: 700 .74rem/1.3 var(--mono);
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: var(--orange-text);
+    margin: 0;
+  }
+  h1, h2, h3 {
+    font-family: var(--display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -.01em;
+    line-height: .92;
+    text-wrap: balance;
+    margin: 0;
+    color: var(--porch-cream);
+  }
+  h2 { font-size: clamp(2.5rem, 6.4vw, 5rem); }
+  h3 { font-size: clamp(1.45rem, 2.4vw, 1.9rem); line-height: 1; letter-spacing: 0; }
+  p { margin: 0; }
+  .lede { font-size: clamp(1.1rem, 1.6vw, 1.32rem); color: var(--cream-dim); max-width: 62ch; }
+
+  /* Top strip */
+  .strip {
+    border-bottom: 1px solid var(--cream-faint);
+    background: var(--night);
+  }
+  .strip .wrap {
+    display: flex; flex-wrap: wrap; gap: 8px 24px;
+    justify-content: space-between; align-items: center;
+    padding-block: 14px;
+    font: 500 .7rem/1.4 var(--mono); letter-spacing: .2em; text-transform: uppercase;
+    color: var(--cream-dim);
+  }
+  .lockup { display: flex; align-items: baseline; gap: 12px; color: var(--porch-cream); }
+  .lockup b { font: 400 1.25rem/1 var(--display); letter-spacing: .02em; }
+  .lockup i { font-style: normal; color: var(--orange-text); }
+
+  /* Hero */
+  .hero { position: relative; overflow: hidden; isolation: isolate; background: var(--night); }
+  .hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+  .hero::after {
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background: linear-gradient(90deg, rgba(15,8,5,.94) 0%, rgba(15,8,5,.7) 45%, rgba(15,8,5,.15) 100%),
+                linear-gradient(0deg, rgba(12,7,4,.85) 0%, transparent 40%);
+  }
+  .hero .wrap { padding-block: clamp(72px, 11vw, 150px) clamp(56px, 8vw, 110px); display: grid; gap: 28px; }
+  .hero h1 { font-size: clamp(3.6rem, 10vw, 8.6rem); line-height: .84; max-width: 11ch; }
+  .hero h1 span { color: var(--orange-text); }
+  .hero .lede { color: rgba(241,234,220,.88); }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 6px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px; min-height: 48px;
+    padding: 15px 22px; border: 1px solid var(--orange); color: var(--porch-cream);
+    font: 700 .74rem/1 var(--mono); letter-spacing: .2em; text-transform: uppercase; text-decoration: none;
+    transition: background-color .2s ease, color .2s ease;
+  }
+  .btn.solid { background: var(--orange); color: #fff8ea; }
+  .btn:hover { background: var(--orange); color: #fff8ea; }
+  .btn.solid:hover { background: transparent; color: var(--porch-cream); }
+
+  /* Chalkboard of numbers */
+  .tally { background: var(--chocolate); border-block: 1px solid var(--cream-faint); }
+  .tally .wrap { display: grid; grid-template-columns: repeat(4, 1fr); padding-block: 0; }
+  .tally div { padding: 28px 20px 26px; border-left: 1px solid var(--cream-faint); display: grid; gap: 6px; }
+  .tally div:first-child { border-left: 0; padding-left: 0; }
+  .tally strong { font: 400 clamp(2.6rem, 5vw, 3.8rem)/1 var(--display); color: var(--gold); font-variant-numeric: tabular-nums; }
+  .tally span { font: 500 .7rem/1.45 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--cream-dim); }
+
+  section.block { padding-block: clamp(64px, 9vw, 120px); }
+  .head { display: grid; gap: 18px; margin-bottom: clamp(36px, 5vw, 60px); }
+
+  /* What we saw */
+  .saw { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(28px, 5vw, 72px); align-items: start; }
+  .notes { display: grid; gap: 0; border-top: 1px solid var(--cream-faint); }
+  .note { display: grid; grid-template-columns: 9.5rem 1fr; gap: 18px; padding-block: 20px; border-bottom: 1px solid var(--cream-faint); }
+  .note dt { font: 700 .7rem/1.5 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--gold-soft); padding-top: 4px; }
+  .note dd { margin: 0; color: var(--cream-dim); }
+  .note dd b { color: var(--porch-cream); font-weight: 700; }
+  .waiting {
+    background: var(--timber); padding: clamp(24px, 3.5vw, 40px);
+    border-top: 3px solid var(--orange); display: grid; gap: 18px;
+    background-image: radial-gradient(circle at 15% 10%, rgba(185,79,26,.22), transparent 22rem);
+  }
+  .waiting ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .waiting li { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: baseline; color: var(--cream-dim); }
+  .waiting li::before { content: ""; width: 8px; height: 8px; border: 1px solid var(--orange-text); transform: rotate(45deg) translateY(-2px); }
+  .waiting li q { color: var(--porch-cream); font-style: italic; quotes: "\201C" "\201D"; }
+  .waiting .verdict { font: 400 1.6rem/1.05 var(--display); text-transform: uppercase; color: var(--porch-cream); }
+
+  /* Ronnie band */
+  .seat { background: var(--cream); color: var(--ink); }
+  .seat h2, .seat h3 { color: var(--ink); }
+  .seat h2 { font-size: clamp(2.3rem, 4.6vw, 3.8rem); }
+  .seat .kicker { color: #9a4519; }
+  .seat .lede { color: #4a3427; }
+  .seat-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(28px, 5vw, 72px); align-items: end; }
+  .seat-list { display: grid; gap: 0; border-top: 2px solid var(--ink); }
+  .seat-list div { padding-block: 16px; border-bottom: 1px solid rgba(36,23,17,.2); display: grid; gap: 4px; }
+  .seat-list b { font: 700 .72rem/1.4 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: #9a4519; }
+  .seat-list p { color: #3b2a21; }
+
+  /* The weekend timeline */
+  .timeline { position: relative; display: grid; gap: 0; }
+  .timeline::before {
+    content: ""; position: absolute; left: 1.35rem; top: 8px; bottom: 8px; width: 2px; background: var(--cream-faint);
+  }
+  .timeline .fill {
+    position: absolute; left: 1.35rem; top: 8px; width: 2px; height: calc((100% - 16px) * var(--p, 1));
+    background: linear-gradient(var(--gold), var(--orange));
+  }
+  .stop { position: relative; display: grid; grid-template-columns: 2.7rem 1fr; gap: 22px; padding-bottom: clamp(36px, 5vw, 56px); }
+  .stop:last-child { padding-bottom: 0; }
+  .stop .dot {
+    width: 2.7rem; height: 2.7rem; display: grid; place-items: center; z-index: 1;
+    background: var(--espresso); border: 1px solid var(--orange);
+    font: 700 .74rem/1 var(--mono); color: var(--orange-text);
+  }
+  .stop-body { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 16px 40px; }
+  .stop-body > div:first-child { display: grid; gap: 10px; align-content: start; }
+  .stop-body .when { font: 700 .7rem/1.3 var(--mono); letter-spacing: .22em; text-transform: uppercase; color: var(--gold-soft); }
+  .stop-body > div:first-child p { color: var(--cream-dim); }
+  .made { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--cream-faint); }
+  .made li { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding-block: 11px; border-bottom: 1px solid var(--cream-faint); color: var(--porch-cream); font-size: 1rem; }
+  .made li small { font: 500 .66rem/1.8 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--cream-dim); white-space: nowrap; }
+
+  /* The kit */
+  .kit-bg { background: var(--chocolate); border-block: 1px solid var(--cream-faint); }
+  .kit { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--cream-faint); border-left: 1px solid var(--cream-faint); }
+  .tool { padding: 26px 24px 28px; border-right: 1px solid var(--cream-faint); border-bottom: 1px solid var(--cream-faint); display: grid; gap: 12px; align-content: start; }
+  .tool p { color: var(--cream-dim); font-size: 1rem; }
+  .tool .who { font: 500 .66rem/1.5 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--cream-dim); }
+  .chip {
+    justify-self: start; font: 700 .62rem/1 var(--mono); letter-spacing: .16em; text-transform: uppercase;
+    padding: 6px 9px; border: 1px solid currentColor;
+  }
+  .chip.ready { color: var(--gold); }
+  .chip.build { color: var(--orange-text); }
+  .chip.decide { color: var(--cream-dim); }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 22px; align-items: center; color: var(--cream-dim); font-size: .95rem; }
+
+  /* Agents roster */
+  .roster { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 2px solid var(--orange); }
+  .agent { padding: 18px 18px 20px 0; border-bottom: 1px solid var(--cream-faint); display: grid; gap: 4px; }
+  .agent b { font: 400 1.5rem/1 var(--display); text-transform: uppercase; color: var(--porch-cream); }
+  .agent span { color: var(--cream-dim); font-size: .95rem; }
+
+  /* Yours */
+  .yours { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 clamp(28px, 5vw, 72px); }
+  .yours div { padding-block: 20px; border-top: 1px solid var(--cream-faint); display: grid; gap: 6px; }
+  .yours b { font: 400 1.35rem/1.05 var(--display); text-transform: uppercase; color: var(--gold); letter-spacing: .01em; }
+  .yours p { color: var(--cream-dim); }
+
+  /* 30 days */
+  .weeks { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .week { background: var(--chocolate); padding: 22px 20px 24px; border-top: 3px solid var(--orange); display: grid; gap: 10px; align-content: start; }
+  .week .wk { font: 700 .7rem/1 var(--mono); letter-spacing: .2em; text-transform: uppercase; color: var(--orange-text); }
+  .week p { color: var(--cream-dim); font-size: 1rem; }
+
+  blockquote.pull { margin: 0; padding-block: clamp(56px, 8vw, 100px); text-align: left; }
+  blockquote.pull p { font: 400 clamp(2.2rem, 5.6vw, 4.4rem)/.98 var(--display); text-transform: uppercase; max-width: 18ch; text-wrap: balance; }
+  blockquote.pull p em { font-style: normal; color: var(--orange-text); }
+  blockquote.pull cite { display: block; margin-top: 22px; font: 700 .72rem/1 var(--mono); letter-spacing: .22em; text-transform: uppercase; color: var(--cream-dim); font-style: normal; }
+
+  .close { background: var(--timber); border-top: 3px solid var(--orange);
+    background-image: radial-gradient(ellipse at 80% 20%, rgba(214,168,77,.14), transparent 30rem); }
+  .close .wrap { padding-block: clamp(64px, 9vw, 110px); display: grid; gap: 22px; }
+  .close h2 { max-width: 14ch; }
+  .ask { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--cream-faint); margin-top: 8px; }
+  .ask div { padding: 18px 20px 18px 0; display: grid; gap: 6px; }
+  .ask b { font: 700 .7rem/1.3 var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--gold-soft); }
+  .ask p { color: var(--cream-dim); font-size: 1rem; }
+
+  footer { background: var(--night); border-top: 1px solid var(--cream-faint); }
+  footer .wrap { padding-block: 26px; display: flex; flex-wrap: wrap; gap: 10px 28px; justify-content: space-between;
+    font: 500 .68rem/1.6 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--cream-dim); }
+
+  /* Reveal: content is visible at rest; JS adds a short rise as it enters. */
+  .rise-in { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes rise { from { transform: translateY(18px); opacity: .35; } to { transform: none; opacity: 1; } }
+  .hero .lead-in > * { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
+  .hero .lead-in > *:nth-child(2) { animation-delay: .12s; }
+  .hero .lead-in > *:nth-child(3) { animation-delay: .24s; }
+  .hero .lead-in > *:nth-child(4) { animation-delay: .36s; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .rise-in, .hero .lead-in > * { animation: none !important; }
+  }
+
+  @media (max-width: 980px) {
+    .kit { grid-template-columns: repeat(2, 1fr); }
+    .weeks { grid-template-columns: repeat(2, 1fr); }
+    .roster { grid-template-columns: repeat(2, 1fr); }
+    .saw, .seat-grid { grid-template-columns: 1fr; }
+    .stop-body { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 700px) {
+    .tally .wrap { grid-template-columns: repeat(2, 1fr); }
+    .tally div { padding: 20px 14px 18px; }
+    .tally div:nth-child(3) { border-left: 0; padding-left: 0; }
+    .tally div:nth-child(n+3) { border-top: 1px solid var(--cream-faint); }
+    .kit, .weeks, .yours, .ask { grid-template-columns: 1fr; }
+    .note { grid-template-columns: 1fr; gap: 6px; }
+    .hero::after { background: linear-gradient(0deg, rgba(12,7,4,.95) 0%, rgba(15,8,5,.7) 70%, rgba(15,8,5,.45) 100%); }
+    .made li { grid-template-columns: 1fr; gap: 2px; }
+    .timeline::before, .timeline .fill { left: 1.1rem; }
+    .stop { grid-template-columns: 2.2rem 1fr; gap: 16px; }
+    .stop .dot { width: 2.2rem; height: 2.2rem; }
+  }
+  @media (max-width: 420px) {
+    .roster { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="lockup"><b>Back Porch Sports</b><i>×</i><span>GatorBait Media</span></div>
+    <span>A proposal · September 2026</span>
+  </div>
+</div>
+
+<header class="hero">
+  <canvas id="porchlight" aria-hidden="true"></canvas>
+  <div class="wrap lead-in">
+    <p class="kicker">For Scott Hamilton, Ronnie Sanders and everybody on the porch</p>
+    <h1>Keep the porch light on <span>all week.</span></h1>
+    <p class="lede">Back Porch Sports already sounds like Saturday in the South. We've built the machinery that carries it through the rest of the week: clips from every episode, one live show that lands on every platform, a board for the regulars, a Friday note, and proof for the sponsors. You keep the voice and the chairs. We run the rest.</p>
+    <div class="hero-actions">
+      <a class="btn solid" href="#weekend">See the weekend <span aria-hidden="true">→</span></a>
+      <a class="btn" href="#start">First 30 days <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</header>
+
+<div class="tally" aria-label="Back Porch Sports at a glance">
+  <div class="wrap">
+    <div><strong data-count="16">16</strong><span>SEC schools on the marquee</span></div>
+    <div><strong data-count="6">6</strong><span>Saturday Sessions episodes on the shelf</span></div>
+    <div><strong data-count="5.9" data-dec="1">5.9</strong><span>Hours of conversation ready to clip</span></div>
+    <div><strong data-count="8">8</strong><span>Agents ready to work the week</span></div>
+  </div>
+</div>
+
+<main>
+  <section class="block">
+    <div class="wrap saw">
+      <div>
+        <div class="head">
+          <p class="kicker">What we saw on the porch</p>
+          <h2>The hard part is done.</h2>
+          <p class="lede">We went through backporchsports.com, the show library, YouTube, Facebook and the handles people search for. The design is finished, the partners are signed and the voices are real. What's missing is the machinery that moves it.</p>
+        </div>
+        <dl class="notes">
+          <div class="note"><dt>The show</dt><dd><b>Saturday Sessions</b> with Scott and Ronnie runs long and unhurried. The six episodes on the shelf run 46 minutes to an hour and a half, with David Epps, Ryan Bartow, Stephen Garcia, David Cutcliffe, Connor O'Gara and Bill Bender. Chris Low of On3 took the Duncan Williams hotline in May.</dd></div>
+          <div class="note"><dt>The desk</dt><dd><b>Tyler Raley, Jay Douglas and Ryan Bartow</b> of Auburn Undercover file daily: camp notes, practice video, the receiver room and a new quarterback. Ronnie also hosts Bowden Ball with Terry Bowden and Coach's Corner with Ellis Johnson.</dd></div>
+          <div class="note"><dt>The partners</dt><dd><b>Duck Club Bourbon</b> presents the show. <b>Duncan Williams Asset Management</b> sponsors the hotline and <b>Kalshi</b> is in the credits. <b>Bar 33</b> in Memphis, <b>YETI</b> and <b>Fanatics</b> have units built into the site.</dd></div>
+          <div class="note"><dt>The reach</dt><dd>The Chris Low episode showed <b>77 YouTube views</b> when we checked. The Facebook page has <b>55 followers</b>, and its latest post, Back Porch Shorts: Week 4 Morning Edition, had one reaction. The conversation is strong and the distribution is thin.</dd></div>
+          <div class="note"><dt>The handles</dt><dd>@backporchsports on Instagram and @BackporchSports on X belong to other, older shows, and we found no TikTok. <b>Back Porch Sports has no Instagram, X or TikTok of its own yet</b>, and those are the platforms where clips travel.</dd></div>
+        </dl>
+      </div>
+      <aside class="waiting" aria-label="Built and waiting">
+        <p class="kicker">Built and waiting</p>
+        <ul>
+          <li><span>The message board says <q>The porch is still under construction.</q></span></li>
+          <li><span>The Porch After Sundown with Bar 33 is designed and currently hidden.</span></li>
+          <li><span>The YETI, Fanatics and SEC gear bands are built and switched off.</span></li>
+          <li><span>Field Notes and the weekend guides are marked Coming Soon.</span></li>
+          <li><span>Explore The Weekend, the first button in the hero, is disabled.</span></li>
+          <li><span><q>Join The Porch</q> promises a weekly note before Saturday.</span></li>
+        </ul>
+        <p class="verdict">Every one of these is something we already know how to switch on.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="block seat">
+    <div class="wrap seat-grid">
+      <div class="head" style="margin-bottom:0">
+        <p class="kicker">Independent, together</p>
+        <h2>Two independent newsrooms and one porch between them.</h2>
+        <p class="lede">Ronnie Sanders has published Auburn Undercover since 2008, and this summer he took it independent after 16 years on 247Sports. GatorBait Media is independent too. Neither one needs a network to own it. Both are better with a shared crew and a shared audience. Back Porch Sports, with Scott and Ronnie, is the SEC show at the center of that. It's a new thing, built from scratch, and every newsroom that joins keeps its own name.</p>
+      </div>
+      <div class="seat-list">
+        <div><b>Cross-newsroom reach</b><p>GatorBait's Florida audience, Auburn Undercover's members, The Buddy Martin Show and GatorBait TV all point to the porch, and the porch sends each fan back to their school's site.</p></div>
+        <div><b>Guest swaps</b><p>Buddy Martin and the GatorBait writers take a chair on Saturday Sessions. Scott and Ronnie drop in on GatorBait TV. Florida at Auburn gets argued from both sides of the rivalry.</p></div>
+        <div><b>One production crew</b><p>The same studio cuts GatorBait's shows, Back Porch Sports and, if Ronnie wants it, Bowden Ball and the Auburn Undercover podcast. Each one runs in its own brand.</p></div>
+        <div><b>Room for more schools</b><p>Every independent SEC site that joins adds a desk and an audience, the way Auburn Undercover's reporters already feed the porch.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="weekend">
+    <div class="wrap">
+      <div class="head">
+        <p class="kicker">Friday night to Sunday porch</p>
+        <h2>The weekend, fully lit.</h2>
+        <p class="lede">Your homepage already tells the week in four beats. Here is what the machinery produces at each one, with the week before it where the recording happens.</p>
+      </div>
+      <div class="timeline" id="timeline">
+        <span class="fill" aria-hidden="true"></span>
+        <div class="stop">
+          <span class="dot" aria-hidden="true">00</span>
+          <div class="stop-body">
+            <div><p class="when">Monday to Thursday</p><h3>Record once. It lands everywhere.</h3><p>Scott and Ronnie record Saturday Sessions the way they do now. One upload from OBS feeds YouTube, Facebook and X at the same moment, and the recording drops straight into the studio.</p></div>
+            <ul class="made">
+              <li>Live on every platform from one upload <small>Livestream relay</small></li>
+              <li>Full transcript with word-level review <small>Captions</small></li>
+              <li>Vertical clips with burned-in captions, 1080 × 1920 <small>Reels</small></li>
+              <li>Episode thumbnail and a guest card in porch colors <small>Creative engine</small></li>
+              <li>Show notes and a searchable episode page <small>Scribe + Rank</small></li>
+            </ul>
+          </div>
+        </div>
+        <div class="stop">
+          <span class="dot" aria-hidden="true">01</span>
+          <div class="stop-body">
+            <div><p class="when">Friday night</p><h3>The note hits the inbox.</h3><p>Join The Porch goes out on its own schedule, assembled from the week's stories and the new episode. The Bar 33 Cocktail of the Week rides along as a sponsor module that reads like part of the note.</p></div>
+            <ul class="made">
+              <li>Join The Porch newsletter, built from what you published <small>Newsletter</small></li>
+              <li>Cocktail of the Week card for Bar 33 <small>Creative engine</small></li>
+              <li>Clips scheduled into Friday's best windows <small>Hype</small></li>
+            </ul>
+          </div>
+        </div>
+        <div class="stop">
+          <span class="dot" aria-hidden="true">02</span>
+          <div class="stop-body">
+            <div><p class="when">Saturday morning</p><h3>Kickoff starts on the board.</h3><p>A game thread opens for every SEC matchup that matters to the regulars. The Tailgate of the Week goes up, and Duck Club's Bourbon Meets The Tailgate pairing card goes out with it.</p></div>
+            <ul class="made">
+              <li>Game-day threads on The Porch message board <small>Community</small></li>
+              <li>Bourbon Meets The Tailgate pairing card <small>Creative engine</small></li>
+              <li>Prediction posts pulled from the week's episode <small>Scribe + Hype</small></li>
+            </ul>
+          </div>
+        </div>
+        <div class="stop">
+          <span class="dot" aria-hidden="true">03</span>
+          <div class="stop-body">
+            <div><p class="when">After the whistle</p><h3>The game gets replayed out loud.</h3><p>The Porch After Sundown comes out of hiding. It records live from Bar 33 and goes out on every platform at once, and the recording feeds Monday's clips.</p></div>
+            <ul class="made">
+              <li>The Porch After Sundown, live from Bar 33 <small>Livestream relay</small></li>
+              <li>Postgame threads while the argument is hot <small>Community</small></li>
+              <li>Comment watch that drafts replies for your approval <small>Automation</small></li>
+            </ul>
+          </div>
+        </div>
+        <div class="stop">
+          <span class="dot" aria-hidden="true">04</span>
+          <div class="stop-body">
+            <div><p class="when">Sunday night</p><h3>Everybody gets the receipt.</h3><p>The week's numbers roll up on their own. The hosts see what worked. Duck Club, Duncan Williams and Bar 33 each get a one-page recap they can take to their own bosses.</p></div>
+            <ul class="made">
+              <li>Monday analytics digest for the hosts <small>Scout</small></li>
+              <li>Sponsor recap: reach, clips, clicks, mentions <small>Scout + Bridge</small></li>
+              <li>Next week's guest shortlist <small>Bridge</small></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block kit-bg">
+    <div class="wrap">
+      <div class="head">
+        <p class="kicker">What we bring</p>
+        <h2>The kit behind the porch.</h2>
+        <p class="lede">These pieces are running or being built for GatorBait now. Each one takes a brand pack, so it runs in Back Porch colors, type and voice. We've marked each one honestly.</p>
+      </div>
+      <div class="kit">
+        <div class="tool"><span class="chip ready">Ready now</span><h3>Captions</h3><p>Offline transcription with word-level review and brand-locked caption styles. Exports MP4, SRT and VTT with no per-video cost.</p><span class="who">Studio · captions</span></div>
+        <div class="tool"><span class="chip ready">Ready now</span><h3>Reel renderer</h3><p>Send clips, a porch theme and overlays, and get back a finished 1080 × 1920 reel with the Duck Club tag where it belongs.</p><span class="who">Studio · reels</span></div>
+        <div class="tool"><span class="chip ready">Ready now</span><h3>Creative engine</h3><p>Thumbnails, carousels, stories and sponsor cards from one brand pack. Every render passes a QA gate and carries a record of how it was made.</p><span class="who">Studio · creative</span></div>
+        <div class="tool"><span class="chip ready">Ready now</span><h3>Livestream relay</h3><p>OBS uploads once and the relay carries it to every platform. If one platform drops, the others keep streaming. It needs one small server.</p><span class="who">Studio · livestream</span></div>
+        <div class="tool"><span class="chip ready">Ready now</span><h3>Client dashboard</h3><p>A content calendar you log into to approve drafts and see what's scheduled and what's published. No Hootsuite seats to buy.</p><span class="who">Cloud · scheduler</span></div>
+        <div class="tool"><span class="chip ready">Ready now</span><h3>Always-on automation</h3><p>Around-the-clock workflows: new stories become draft posts, comments get watched, and the Monday digest assembles itself.</p><span class="who">Cloud · automation</span></div>
+        <div class="tool"><span class="chip build">Building</span><h3>Clip finding</h3><p>Picking the moments worth cutting is done by hand today by our research and writing agents. An automated finder is being built from scratch.</p><span class="who">Studio · clipping</span></div>
+        <div class="tool"><span class="chip build">Building</span><h3>The Porch board</h3><p>We're standing up the community layer for GatorBait now, and the porch can open on the same foundation. It opens empty and honest, with no seeded members.</p><span class="who">Community</span></div>
+        <div class="tool"><span class="chip build">Building</span><h3>Join The Porch</h3><p>Newsletter templates proven on the GatorBait Magazine newsletter, with a self-hosted sender selected. A partner module comes built in.</p><span class="who">Newsletter</span></div>
+      </div>
+      <div class="legend"><span class="chip ready">Ready now</span> running for GatorBait today <span class="chip build">Building</span> in progress, shared with GatorBait <span class="chip decide">Decide together</span> your call</div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="head">
+        <p class="kicker">Who works the week</p>
+        <h2>Eight hands on deck.</h2>
+        <p class="lede">An agency of eight AI agents runs the routine work from a Back Porch brand folder that holds your voice, your partners and your rules. A person directs them, and nothing goes public without your yes.</p>
+      </div>
+      <div class="roster">
+        <div class="agent"><b>Scout</b><span>Finds the stories and measures what won</span></div>
+        <div class="agent"><b>Scribe</b><span>Show notes, recaps and transcripts</span></div>
+        <div class="agent"><b>Hype</b><span>Facebook, Instagram and TikTok</span></div>
+        <div class="agent"><b>Blueprint</b><span>Thumbnails, cards and reel looks</span></div>
+        <div class="agent"><b>Rank</b><span>Search, so episodes get found</span></div>
+        <div class="agent"><b>Bridge</b><span>Guests, partners and cross-promos</span></div>
+        <div class="agent"><b>Wrench</b><span>Pipelines and automation</span></div>
+        <div class="agent"><b>Webmaster</b><span>The site, day to day</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block kit-bg">
+    <div class="wrap">
+      <div class="head">
+        <p class="kicker">What stays yours</p>
+        <h2>It's still your porch.</h2>
+      </div>
+      <div class="yours">
+        <div><b>The voice</b><p>Scott and Ronnie sound like Scott and Ronnie. The brand folder is written from your episodes and your homepage, and the agents write to it.</p></div>
+        <div><b>The approval</b><p>The studio produces and never publishes on its own. Hype posts only what you approved. The comment watch drafts replies and never sends one.</p></div>
+        <div><b>The footage</b><p>Transcription runs on our own machines. Your recordings are never training data for anybody's cloud.</p></div>
+        <div><b>The partners</b><p>Duck Club, Duncan Williams, Bar 33, YETI and Fanatics are your relationships. We make the units and the recaps, and you sign the deals.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="start">
+    <div class="wrap">
+      <div class="head">
+        <p class="kicker">The first 30 days</p>
+        <h2>One month to a lit porch.</h2>
+      </div>
+      <div class="weeks">
+        <div class="week"><span class="wk">Week 1</span><h3>Brand pack</h3><p>Your colors, type, voice and partner rules go into the Back Porch brand folder. We claim matching Instagram, TikTok and X handles, and set caption styles and reel themes in porch colors.</p></div>
+        <div class="week"><span class="wk">Week 2</span><h3>The back catalog</h3><p>All six Saturday Sessions episodes go through the studio: transcripts, a first batch of clips, new thumbnails and episode pages.</p></div>
+        <div class="week"><span class="wk">Week 3</span><h3>Go live</h3><p>The next Saturday Sessions streams to every platform from one upload. The first Join The Porch goes out that Friday.</p></div>
+        <div class="week"><span class="wk">Week 4</span><h3>Open the gate</h3><p>The board soft-opens with episode and game threads. Duck Club gets its first sponsor recap on Sunday night.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <blockquote class="pull">
+      <p>The score tells you what happened. <em>The people tell you why it mattered.</em></p>
+      <cite>Back Porch Sports</cite>
+    </blockquote>
+  </div>
+
+  <section class="close">
+    <div class="wrap">
+      <p class="kicker">Join the porch</p>
+      <h2>There's always room for one more.</h2>
+      <p class="lede">We'd start small. Pick one episode, and we'll run it through the whole machine before anyone commits to anything bigger.</p>
+      <div class="ask">
+        <div><b>Step one</b><p>A 30-minute call with Scott and Ronnie to set the voice and the partner rules.</p></div>
+        <div><b>Step two</b><p>One pilot episode: clips, captions, thumbnail, show notes and a sample sponsor recap.</p></div>
+        <div><b>Step three</b><p>If it's right, we build the Week 1 brand pack and start the 30 days.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Prepared by GatorBait Media for Back Porch Sports</span>
+    <span>Figures from backporchsports.com, YouTube and Facebook, checked September 2026</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Porch light: a warm glow that breathes, with slow embers rising off the fire. */
+  var c = document.getElementById('porchlight');
+  var ctx = c && c.getContext && c.getContext('2d');
+  if (ctx) {
+    var w, h, dpr, embers = [], t = 0, running = true;
+    function size() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = c.clientWidth; h = c.clientHeight;
+      c.width = w * dpr; c.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var n = w < 700 ? 26 : 60;
+      embers = [];
+      for (var i = 0; i < n; i++) embers.push(spawn(true));
+    }
+    function spawn(anywhere) {
+      return {
+        x: w * (0.55 + Math.random() * 0.45),
+        y: anywhere ? Math.random() * h : h + 10,
+        r: 0.6 + Math.random() * 1.8,
+        vy: 0.15 + Math.random() * 0.45,
+        sway: Math.random() * Math.PI * 2,
+        life: 0.4 + Math.random() * 0.6
+      };
+    }
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      var flick = 1 + Math.sin(t * 0.9) * 0.04 + Math.sin(t * 2.3) * 0.025;
+      var gx = w * 0.8, gy = h * 0.3;
+      var g = ctx.createRadialGradient(gx, gy, 0, gx, gy, Math.max(w, h) * 0.7 * flick);
+      g.addColorStop(0, 'rgba(214,168,77,0.30)');
+      g.addColorStop(0.25, 'rgba(198,95,43,0.20)');
+      g.addColorStop(0.6, 'rgba(59,42,33,0.25)');
+      g.addColorStop(1, 'rgba(22,13,8,0)');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+      var f = ctx.createRadialGradient(w * 0.85, h * 1.05, 0, w * 0.85, h * 1.05, h * 0.8);
+      f.addColorStop(0, 'rgba(223,119,65,' + (0.28 * flick) + ')');
+      f.addColorStop(1, 'rgba(223,119,65,0)');
+      ctx.fillStyle = f; ctx.fillRect(0, 0, w, h);
+      for (var i = 0; i < embers.length; i++) {
+        var e = embers[i];
+        var a = Math.max(0, Math.min(1, e.y / h)) * e.life;
+        ctx.beginPath();
+        ctx.arc(e.x + Math.sin(e.sway + t) * 6, e.y, e.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(241,190,120,' + (a * 0.85) + ')';
+        ctx.fill();
+        if (!reduce) {
+          e.y -= e.vy; e.sway += 0.004;
+          if (e.y < -10) embers[i] = spawn(false);
+        }
+      }
+    }
+    function loop() {
+      if (!running) return;
+      t += 0.016; draw();
+      requestAnimationFrame(loop);
+    }
+    size();
+    window.addEventListener('resize', function () { size(); if (reduce) draw(); });
+    if (reduce) { draw(); }
+    else {
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (en) {
+          var vis = en[0].isIntersecting;
+          if (vis && !running) { running = true; loop(); }
+          else if (!vis) running = false;
+        }).observe(c);
+      }
+      loop();
+    }
+  }
+
+  if (reduce || !('IntersectionObserver' in window)) return;
+
+  /* Rise-in for blocks as they enter; everything is readable before this runs. */
+  var targets = document.querySelectorAll('.head, .note, .waiting, .seat-list > div, .stop, .tool, .agent, .yours > div, .week, blockquote.pull, .ask > div');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting && en.boundingClientRect.top > 0) {
+        en.target.classList.add('rise-in');
+        io.unobserve(en.target);
+      } else if (en.isIntersecting) io.unobserve(en.target);
+    });
+  }, { threshold: 0.12 });
+  targets.forEach(function (el) { io.observe(el); });
+
+  /* Count the tally up once when it comes into view. */
+  var nums = document.querySelectorAll('[data-count]');
+  var counted = false;
+  new IntersectionObserver(function (en, obs) {
+    if (!en[0].isIntersecting || counted) return;
+    counted = true; obs.disconnect();
+    var start = performance.now();
+    function step(now) {
+      var p = Math.min(1, (now - start) / 1100), ease = 1 - Math.pow(1 - p, 3);
+      nums.forEach(function (n) {
+        var target = parseFloat(n.getAttribute('data-count'));
+        var dec = parseInt(n.getAttribute('data-dec') || '0', 10);
+        n.textContent = (target * ease).toFixed(dec);
+      });
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }, { threshold: 0.4 }).observe(document.querySelector('.tally'));
+
+  /* The timeline line fills as you read down the weekend. */
+  var tl = document.getElementById('timeline');
+  function fill() {
+    var r = tl.getBoundingClientRect(), vh = window.innerHeight;
+    var p = (vh * 0.6 - r.top) / r.height;
+    tl.style.setProperty('--p', Math.max(0, Math.min(1, p)).toFixed(3));
+  }
+  window.addEventListener('scroll', fill, { passive: true });
+  window.addEventListener('resize', fill);
+  fill();
+})();
+</script>

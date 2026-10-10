@@ -1,4 +1,4 @@
-<!-- @dsCard group="Stories" height=500 width=1140 subtitle="Photo and columnist share the lead" -->
+<!-- @dsCard group="Editorial" height=1055 subtitle="Lead block and the article type spec." -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,21 +9,21 @@
 <link rel="stylesheet" href="../bundle.css">
 <style>
   html, body { margin: 0; background: var(--paper); }
-  .frame { padding: var(--space-24) var(--space-28); }
+  .pane { padding: var(--space-24) var(--space-32); }
+  .pane + .pane { border-top: var(--border-1) solid var(--rule); }
+  .gb .tagline { margin: 0 0 var(--space-12); font: 700 11px/1 var(--font-display); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-2); }
+  .bleed { margin: 0 calc(var(--space-32) * -1); }
+  .row { display: flex; flex-wrap: wrap; gap: var(--space-16); align-items: flex-start; }
+  .phone { width: 390px; height: 100px; border: var(--border-1) solid var(--rule); background: var(--paper); }
 </style>
 </head>
 <body>
-<div class="gb frame">
-  <article class="gb-lead">
-    <figure><a href="#"><img src="/_blob/6bd4c73a7882b769a6ee908f6faa84f2" alt="A player speaks at the Florida Gators podium"></a><figcaption class="gb-caption">At the Florida Gators podium · Photo: Tim Casey / GatorCountry.com</figcaption></figure>
-    <div class="gb-lead__copy">
-      <p class="gb-kicker">The Buddy Martin column</p>
-      <a href="#"><h1>Saturday’s Bill Comes Due: Gators, Ole Miss, and ‘The Promise’ That Started It All</h1></a>
-      <p class="gb-lead__deck">Nobody needs a sequel to what happened in that locker room. That story already got its ending: a crystal football in January.</p>
-      <p class="gb-meta">Buddy Martin · September 22, 2026</p>
-      <a class="gb-read" href="#">Read the story <span aria-hidden="true">→</span></a>
-    </div>
-  </article>
+<div class="gb pane"><p class="tagline">Lead · Gator Day</p>
+<article class="gb-lead" style="padding:0;max-width:none"><figure class="gb-lead__photo"><a class="gb-frame" href="#"><img src="/_blob/6bd4c73a7882b769a6ee908f6faa84f2" alt="A player speaks at the Florida Gators podium"></a><figcaption class="gb-caption"><span>At the Florida Gators podium</span><b>Photo: Tim Casey / GatorCountry.com</b></figcaption></figure><div class="gb-lead__copy"><div class="gb-kicker">The Buddy Martin column</div><h1><a class="gb-hl" href="#">Saturday’s Bill Comes Due: Gators, Ole Miss and the Promise That Started It All</a></h1><p class="gb-dek">What Florida owes itself after the Auburn win.</p><p class="gb-byline">Buddy Martin<span>Oct. 10</span></p><p class="gb-excerpt">The Gators have been paying down a debt since the spring. Saturday is when it comes due.</p><a class="gb-more" href="#">Read the story</a></div></article>
+</div><div class="gb pane"><p class="tagline">Article opening · Gator Day</p>
+<div class="gb-article"><p class="gb-dek-article">A bold opening line the author sized as a deck.</p><p class="gb-lede">Florida won its fifth straight on a night the defense decided it, and nobody in the stadium was surprised.</p><p>The body runs in Barlow 500 at 19px on desktop and 17.5px on phones, one face and one weight from the first paragraph to the last, with the lede at 20px and 18.5px carrying the orange Condensed drop cap.</p></div>
+</div><div class="gb pane" data-theme="night"><p class="tagline">Article opening · Swamp Night</p>
+<div class="gb-article"><p class="gb-dek-article">A bold opening line the author sized as a deck.</p><p class="gb-lede">Florida won its fifth straight on a night the defense decided it, and nobody in the stadium was surprised.</p><p>The body runs in Barlow 500 at 19px on desktop and 17.5px on phones, one face and one weight from the first paragraph to the last, with the lede at 20px and 18.5px carrying the orange Condensed drop cap.</p></div>
 </div>
 </body>
 </html>

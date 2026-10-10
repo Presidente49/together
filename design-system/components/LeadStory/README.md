@@ -1,13 +1,17 @@
 # LeadStory
 
-The front page's one dominant story: a photograph beside the lead copy, which opens under a 4px `orange` rule.
+The front page's one dominant story, plus the article-opening type spec (dek, lede with drop cap, body).
 
 ## Anatomy
-- Figure: the photo at `ratio-lead` (at most 430px tall), `object-fit: contain` on `stone`, with a `gb-caption` credit ("At the Florida Gators podium · Photo: Tim Casey / GatorCountry.com").
-- Copy: Kicker, the headline in `lead-headline` (fluid 29 to 36px), a `deck` in `slate` capped at `measure-deck`, a `meta` line ("Buddy Martin · September 22, 2026") and a ReadLink.
-- Grid `.9fr / 1.1fr` with a `space-24` gap. At 1100px the photo stacks above the copy at 16/10; at 820px it is 230px tall and the headline 28px.
+- Photo: `ratio-lead` frame on `chip`, `object-fit: cover`, with a `caption` credit line.
+- Copy: Kicker, headline in `lead-headline` (normal case, Condensed 700, clamp 30–38px), `dek` (20px, 22px desktop), Byline, `excerpt` (Barlow 400, 16px) and a MoreLink.
+- Phones: kicker and headline first, then the photo, then the rest, so the headline sits high on the screen. From 821px a 12-column grid: photo columns 1–7, copy 8–12.
+- Article body (`gb-article`): body Barlow **500**, 19px desktop / 17.5px phone; lede 20px / 18.5px with the drop cap (orange `orange`, Condensed 800, 4.6em / 4.15em on phones, floated); `article-dek` Condensed 700 30px / 25px with **no** drop cap.
 
 ## Use it
-- One per page. Buddy Martin's newest column leads, with the kicker "The Buddy Martin column"; any other lead gets "The Big Read".
-- Print the full headline, never truncated. Keep the photographer's credit.
-- The consumer supplies the story: title, deck, author, date, canonical URL, photo, alt text and credit.
+- One lead per page: Buddy Martin's newest column, else "The Big Read".
+- Print the full headline; keep the photographer's credit.
+
+## Don't
+- No all-caps lead headline; the lead is editorial, like the Magazine.
+- No drop cap on a dek or when the first paragraph opens with a quote mark or "I'm".

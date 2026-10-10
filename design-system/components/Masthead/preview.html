@@ -1,4 +1,4 @@
-<!-- @dsCard group="Navigation" height=150 width=1240 subtitle="Desktop header: wordmark, tagline, Join and the section nav" -->
+<!-- @dsCard group="Brand frame" height=452 subtitle="Slim blue band, typeset wordmark, Join. Phone at 390px." -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,22 +9,21 @@
 <link rel="stylesheet" href="../bundle.css">
 <style>
   html, body { margin: 0; background: var(--paper); }
-  .frame { padding: var(--space-24) var(--space-28); }
+  .pane { padding: var(--space-24) var(--space-32); }
+  .pane + .pane { border-top: var(--border-1) solid var(--rule); }
+  .gb .tagline { margin: 0 0 var(--space-12); font: 700 11px/1 var(--font-display); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-2); }
+  .bleed { margin: 0 calc(var(--space-32) * -1); }
+  .row { display: flex; flex-wrap: wrap; gap: var(--space-16); align-items: flex-start; }
+  .phone { width: 390px; height: 100px; border: var(--border-1) solid var(--rule); background: var(--paper); }
 </style>
 </head>
 <body>
-<div class="gb">
-  <a class="gb-skip" href="#main">Skip to stories</a>
-  <header class="gb-masthead">
-    <div class="gb-masthead__brand">
-      <a class="gb-masthead__logo" href="#" aria-label="GatorBait home"><img src="/_blob/58de01033dc16634cfc4edd76d5ad335" alt="GatorBait" width="250" height="67"></a>
-      <p class="gb-masthead__tagline">Independent voices.<br><strong>Unmistakably GatorBait.</strong></p>
-      <a class="gb-button" href="#">Join GatorBait →</a>
-    </div>
-    <nav class="gb-nav" aria-label="GatorBait sections">
-      <a href="#" aria-current="page">Front Page</a><a href="#">Latest</a><a href="#">Magazine</a><a href="#">GatorBait TV</a><a href="#">Podcasts</a><a href="#">Message Board</a><a href="#">Store</a><a href="#">Sign in</a>
-    </nav>
-  </header>
+<div class="gb pane"><p class="tagline">Desktop · Gator Day</p>
+<div class="bleed"><header class="gb-masthead"><div class="gb-masthead__wrap"><a class="gb-wordmark" href="#" aria-label="GatorBait Media home">GatorBait <small>MEDIA</small></a><div class="gb-masthead__right"><a class="gb-signin" href="#">Sign in</a><a class="gb-button" href="#">Join <span class="gb-cta">GatorBait</span></a></div></div></header></div>
+</div><div class="gb pane" data-theme="night"><p class="tagline">Desktop · Swamp Night</p>
+<div class="bleed"><header class="gb-masthead"><div class="gb-masthead__wrap"><a class="gb-wordmark" href="#" aria-label="GatorBait Media home">GatorBait <small>MEDIA</small></a><div class="gb-masthead__right"><a class="gb-signin" href="#">Sign in</a><a class="gb-button" href="#">Join <span class="gb-cta">GatorBait</span></a></div></div></header></div>
+</div><div class="gb pane"><p class="tagline">Phone · 390px</p>
+<iframe class="phone" style="height:62px" title="Phone width, 390px" srcdoc="&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;../../tokens.css&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;../bundle.css&quot;&gt;&lt;style&gt;html,body{margin:0;background:var(--paper)}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;gb&quot;&gt;&lt;header class=&quot;gb-masthead&quot;&gt;&lt;div class=&quot;gb-masthead__wrap&quot;&gt;&lt;a class=&quot;gb-wordmark&quot; href=&quot;#&quot; aria-label=&quot;GatorBait Media home&quot;&gt;GatorBait &lt;small&gt;MEDIA&lt;/small&gt;&lt;/a&gt;&lt;div class=&quot;gb-masthead__right&quot;&gt;&lt;a class=&quot;gb-signin&quot; href=&quot;#&quot;&gt;Sign in&lt;/a&gt;&lt;a class=&quot;gb-button&quot; href=&quot;#&quot;&gt;Join &lt;span class=&quot;gb-cta&quot;&gt;GatorBait&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;/header&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
 </div>
 </body>
 </html>

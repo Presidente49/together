@@ -1,6 +1,6 @@
 # GameDayCard
 
-The share graphic for pregame, final, halftime and quote moments. The real cards are PNGs rendered from `assets/gameday/` in the GatorBait repo (1200×675 landscape, 1080×1350 portrait, 1080×1080 square); this component is the in-page miniature of the final card.
+The share graphic for pregame, final, halftime and quote moments. The real cards are PNGs rendered from `assets/gameday/` in the GatorBait repo (1200×675 landscape, 1080×1350 portrait, 1080×1080 square); this component is the in-page miniature, shown as the Florida vs. South Carolina game-day card.
 
 ## Anatomy
 - Top band `gator-blue` with the typeset wordmark and kicker, closed by an 8px `orange` rule.

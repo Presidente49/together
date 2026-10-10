@@ -1,17 +1,17 @@
 # Button
 
-A square, solid call to action: `navy` fill, `on-navy` label, 700 13px Barlow, no radius.
+A square, solid call to action: `orange-ink` fill, `on-orange` label, Condensed 800 uppercase.
 
 ## Variants
-- **Default**: "Join GatorBait →" in the masthead. Hover fills `gator-blue` over 160ms on fine pointers only.
-- **`gb-button--block`**: full width, 15px/1.4, at least `tap-target` tall. Membership plan buttons and the contact form's "Send message".
-- **`gb-button--signal`**: the mobile drawer's Join. `gator-orange` fill with a `navy-deep` label (5.2:1), uppercase, 48px tall.
+- **Default**: 44px tall (`tap-target`), `button` style, no radius. "Join GatorBait", "Send message".
+- **`gb-button--ghost`**: transparent with a 2px `shadow-ring` in the text colour, for secondary actions beside a default button.
+- **`gb-button--compact`**: 40px, 14px type; the masthead's Join.
 
 ## Use it
-- One button per view; everything else is a ReadLink or panel link.
-- Labels are verb-led and exact: "Join GatorBait", "Send message", "Explore membership". An arrow (→) follows a label that leaves the page.
-- The consumer supplies the label and an `href` (use `<a>`), or a native `<button>` for forms.
+- One default button per view; the rest are MoreLinks or ghost.
+- Labels are verb-led: "Join GatorBait", "Send message".
+- Use `<a>` for navigation and `<button>` for forms.
 
 ## Don't
-- No rounding, shadows or gradients; the source strips Wix's own.
-- Don't put white text on `gator-orange` (3.5:1).
+- Don't use `orange` (3.5:1 with white) for the fill; `orange-ink` is the fill that carries white text.
+- **Flag:** at night `orange-ink` is the plain brand orange and white text on it is 3.5:1. The live site ships it that way; fix by switching night buttons to `ink` on `orange` (5.1:1) when the desk approves.

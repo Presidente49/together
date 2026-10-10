@@ -1,84 +1,46 @@
-GatorBait Media is an independent Florida Gators publisher: a free sports-news front page, GatorBait Magazine, GatorBait TV and The Buddy Martin Show, led by Buddy Martin's column. The system reads as a real sports newsroom and magazine. It is photography first, set in one family (Barlow), printed in navy on warm paper, and organized by rules instead of cards and shadows. Orange and Gator blue are accents, never floods.
+# GatorBait Media design system
 
-## Content fundamentals
+The system behind the live GatorBait Media front page: **Gator Day**, a white page with Gator blue, orange and white, set entirely in Barlow and Barlow Condensed. **Swamp Night** is the dark variant of the same tokens (`data-theme="night"`). Rebuilt Oct. 10, 2026 from the live front-page stylesheet, the Oct. 4 masthead fix and the Oct. 2026 type standard; it replaces the Sept. 28 "Paper" system.
 
-**Voice.** Plain, confident and knowledgeable, like a beat writer who has covered the program for decades. Short declarative lines. No hype words, exclamation marks or emoji anywhere in the interface.
+## Look
+- **White first.** The everyday page is `paper` white with `ink` text, `hub` tint behind modules and `gator-blue` as the one big colour field (masthead, game-day board). "That navy blue is too dark": navy is not part of the day look.
+- **Orange is a rule and a signal.** Use `orange` for rules, the focus ring and the roundel ring; use `orange-ink` for any fill that carries white text and for small orange text.
+- **Rules, not shadows.** Everything is square (`radius-0`); only inset rings (`shadow-ring`, `shadow-underline`) exist.
+- **Swamp Night** (`data-theme="night"`) swaps the same names to a deep navy; it is the preview look (`?gbm_fp=night`) and the one-line rollback, not the default.
 
-- Tagline: "Independent voices. **Unmistakably GatorBait.**"
-- Section promises: "The voices you come for.", "Beyond the final score.", "Gator conversation, from people who know the program."
-- Actions name the destination and end with an arrow when they leave the page: "Read the story →", "All stories →", "Open the magazine →", "Join GatorBait →", "Watch GatorBait TV →".
-- Honest status: "The GatorBait Message Board is being prepared. Discussion is not open yet." Never claim live, scheduled or open when the product doesn't back it.
+## Color
+Every colour has a day and a night value; reference tokens by name, never by hex.
+- Page and text: `paper` ground; `ink` for headlines and copy; `ink-2` for meta, captions and teasers; `link` for kickers, timestamps and links. `hub` and `card` sit behind modules; `chip` fills chips and photo placeholders; `rule` is hairlines only.
+- Brand: `gator-blue` is fixed `#0021a5`. `mast` is the masthead band (blue by day, navy at night); `deep` is the stage ground (blue by day, near-black at night). White text only on `mast` and `deep`: `on-mast`, `on-deep`, `mast-sub`, `deep-ink`, `deep-body`, `deep-label`.
+- Orange: `orange` (rules, focus, roundel ring, never text and never under white text, 3.5:1); `orange-ink` (fills and small text with `on-orange`, 4.8:1 by day); `tk-label` for ticker lead-ins; `live-red` only while a game is live.
+- Contrast: every day pair is at least 4.5:1. **Flagged, kept exact from the live source:** at night `orange-ink` is the brand orange, so white text on night buttons, pills and ticker tags is 3.5:1, and `orange-ink` text on `card` is 4.3:1. Proposed fix: ink on orange (5.1:1) for night fills.
 
-**Headlines** run exactly as published, in the writer's own casing, and are never truncated or clamped: "The Med School Dropout Who Made Auburn Bleed Orange and Blue", "Sumrall Cussing: His Wife Wants Him To Please Stop. Damn!".
+## Type
+Two families, nothing else.
+- **Barlow Condensed** (600/700/800) is display: the wordmark, headlines, kickers, nav, ticker, buttons, numerals and the drop cap. The lead headline is editorial normal case at 700; hub and stage titles are uppercase 800 with 0 tracking.
+- **Barlow** (400–800) is text. Article body is weight **500**, 19px desktop / 17.5px phone; the lede (first paragraph) is 20px / 18.5px and carries the orange Condensed 800 drop cap (4.6em floated, 4.15em on phones); the dek is Condensed 700, 30px / 25px, with no drop cap. Front-page excerpts are 400 at 16px.
+- Tokens: `Display`, `Labels`, `Copy`, `Meta` groups in `tokens.json`; each style names its use and its phone size.
 
-**Kickers** are two to four words in title or sentence case ("The Buddy Martin column", "The Big Read", "Only at GatorBait", "Game Week Reference", "Watch & Listen"); CSS sets them uppercase.
+## Space, edges, grid
+- Gutter steps with the viewport: `pad-phone` 16 → `pad-tablet` 24 (600px) → `pad-desktop` 32 (821px) → `pad-wide` 64 (1100px); content stops at `measure-wrap` 1440px.
+- Every link and button is at least `tap-target` 44px tall.
+- Rule weights: `border-2` kicker dash and underline, `border-3` focus ring, `border-4` pull-quote bar and the board's foot.
+- Mobile-first breakpoints `bp-tablet`, `bp-desktop`, `bp-wide`, plus 429 / 374 / 360 for the masthead and score bug.
 
-**Meta** is "Author · Month D, YYYY": "Buddy Martin · September 24, 2026". **Captions** name the game and the photographer: "Florida at Auburn · Photo: Chris Spears".
+## The masthead (phone fix)
+One slim `mast` band: typeset `wordmark` (clamp 34–44px on phones, 56px desktop), the tracked "MEDIA" label (hidden under 430px) and a compact Join button. No dateline row, no logo image, no white block behind the lettering. The old `gatorbait-wordmark.webp` in `assets/Logos` is kept for reference only.
 
-**Names** are exact: GatorBait (one word, capital B), GatorBait Media, GatorBait Magazine, GatorBait Magazine Newsletter (not "GatorBait Weekly"), GatorBait TV, The Buddy Martin Show, the Message Board.
+## Components
+Fourteen, all in `components/bundle.css`, each with a README and a live preview in both themes:
+Masthead, SectionNav (links and score bug), Ticker, GameBoard, Kicker, Button, MoreLink, LeadStory (with the article type spec), LatestList, ColumnistRail, PullQuote, HubHead, Chips, GameDayCard. Wrap a page in `class="gb"`; switch to night with `data-theme="night"`.
 
-**Editorial order.** Buddy Martin's newest column leads the front page, and he leads Magazine packages. Every other list is newest first. Each story has one canonical URL and one home; never show the same story twice on a page.
+## Game-day cards
+The pregame, final, halftime and quote share graphics follow this system (white card, `gator-blue` band, 8px orange rule, Condensed names and numerals). They are rendered as PNGs by `assets/gameday/` in the GatorBait repo from ESPN data; a sample-data card carries an "orange-ink Sample data" tag. `GameDayCard` is the in-page miniature.
 
-## Visual foundations
+## Don't
+- No navy fields, no Paper cream ground, no other font families, no radius, no gradients or shadows.
+- No white text on `orange` or on `paper`-coloured fills; no orange small text on white.
+- No dateline above the masthead; no second Join button.
 
-### Color
-- Ground is `paper` (#fffdf9) everywhere; ink is `navy`. Use `ink-body` for article paragraphs, `slate` for decks, `slate-meta` for bylines and `slate-caption` for credits.
-- `orange` is a rule color: the 4px top on section titles, lead copy, panels and plan cards, and the focus ring. It is 3.8:1 on paper, too light for small text, so kickers and the current nav item use `orange-text`.
-- `gator-blue` is for links that move the reader on (the Read link, drawer links) and the Join button's hover.
-- `gator-orange` belongs to the mobile shell: its 4px top border, the drawer's current-item marker and the mobile Join fill, labelled in `navy-deep`.
-- `navy` fills exactly one block per page, the Magazine promo panel, with `on-navy` text and a `peach` kicker. `navy-deep` is the footer.
-- `stone` grounds the voices band and letterboxes the lead photo; `photo-well` letterboxes every other photo.
-- One theme, Paper. Dark broadcast-dashboard styling and pale-blue headings are rejected directions; don't add them.
-
-### Type
-- Barlow only: 400 for reading (`copy`), 700 for UI (`ui`), 800 for every headline (`display`), with `-0.025em` tracking on headlines and `text-wrap: pretty`. Never set Georgia, Times New Roman or Montserrat.
-- Scale: `lead-headline` 36px (fluid from 29px), `page-title` 36px, `panel-headline` 31px, `band-headline` 29px, `story-headline` 23px, `card-headline` 21px, `section-title` 18px, `wire-headline` 16px.
-- Reading: `article-body` 17px/1.68 on a 940px measure (16px/1.62 on phones), `deck` 15px/1.6 capped at 70ch.
-- Labels: `kicker` 11px 700 uppercase at 0.1em, `meta` 11px, `caption` 10px, `edition` 10px at 0.12em.
-- Phones: the lead headline drops to 28px/1.12, page titles to 28px (article titles 25px), story headlines to 19px. Everything fits 390px with no clipping and no sideways scroll.
-
-### Layout
-- Page measure `measure-page` (1240px); gutters `space-28` on desktop, `space-18` on phones, `space-14` at 360px and below.
-- Front page: the main column and right rail split `2.1fr / 1fr` (rail at least 260px) with a `space-32` gap. Story rows are two across with `space-24` gaps.
-- Breakpoints: `bp-tablet` 1100px stacks the lead photo; `bp-phone` 820px swaps the Masthead for the MobileShell and drops every grid to one column; `bp-small` 520px makes the Blog feed one column.
-- One landscape ratio per module: `ratio-story` 16/9 for support rows, `ratio-card` 16/10 for the Latest grid, Blog and Magazine cards, `ratio-lead` 4/5 for the lead, `ratio-cover` 4/3 for the Magazine cover.
-- Reserve image geometry before load so nothing jumps.
-
-### Rules, borders, corners
-- Hierarchy of rules: `border-4` `orange` starts a module; `border-3` `navy` frames the section nav and the Magazine cover; `border-2` `navy` frames the voices band; `border-1` in `rule`, `rule-soft` or `hairline` divides.
-- Corners are square (`radius-0`) on every button, card, panel, input and photo. The only exceptions are the drawer's round close button (`radius-circle`) and the menu glyph's bars (`radius-bar`).
-- No shadows on the page. Only the mobile shell (`shadow-shell`) and the open drawer (`shadow-drawer`) lift.
-
-### Imagery
-- Real, current editorial photography leads. Approved GatorBait and staff photographers first, never generated faces, helmets, logos or uniforms.
-- Photos are shown whole: `object-fit: contain` on `stone` or `photo-well`, so portraits and wide shots share a box without cropping.
-- Keep captions and credits. Texture, when used at all, is sparse: grain, paper, halftone or archive treatment, never lens flares or particles.
-
-### Motion and states
-- Motion is small and optional: button fills and the Read arrow ease over 160ms, only on fine pointers, and only when `prefers-reduced-motion` allows. The drawer slides in 240ms over a 200ms scrim fade.
-- No entrance animations, no content that starts hidden, no autoplay story swapping, no scroll hijacking.
-- Hover: links underline at a 4px offset on fine pointers. Current: `orange-text` in the nav, a 4px `gator-orange` marker in the drawer.
-- Focus: a solid 3px `orange` outline at a 3px offset (`orange-focus` on the front page). Every link row, button and control is at least `tap-target` (44px) tall.
-
-## Iconography
-
-There is no icon set. Direction is a typed arrow (→), set `aria-hidden` when it follows a label. The menu glyph is three 2px `gator-blue` bars drawn in CSS, and close is a × in a circle. No emoji, no icon fonts.
-
-The logo is the GatorBait script wordmark (`assets/Logos/gatorbait-wordmark.webp`, 900 × 241), blue with an orange outline. Show it at 250px in the masthead, 240px on the Magazine mast, up to 190px in the mobile shell and 168px in the drawer, always on a light ground, always from the file. Never redraw, recolor or re-letter it.
-
-## Surfaces
-
-- **Front page**: Masthead, LeadStory, a support row of two StoryCards, WireList, VoicesBand, "More from the newsroom" StoryCards, and PromoPanels in the rail.
-- **Blog feed**: StoryCard `gb-story--feed` in a three-column grid. Wix keeps its categories, search and pagination.
-- **Article**: `page-title` headline, `article-body` copy, 940px measure.
-- **Magazine**: MagazineCover, then inside cards. The Magazine is separate from the free front page.
-- **Membership and contact**: PlanCard and Field restyle Wix's native plans and forms without replacing them.
-- **Phones**: MobileShell is the only header on every route.
-
-## Accessibility notes
-
-Every text pair above holds 4.5:1. Three source pairs miss the 3:1 non-text minimum and are kept as shipped: `peach-focus` as a ring on `paper-white` (1.7:1), the `control-line` borders on the menu trigger and close button (1.8:1), and `rule-soft` input borders (1.6:1). Use `orange` for rings and a darker border when you next touch those controls.
-
-## Not synced
-
-From Presidente49/gatorbait-media-redesign at d696498, not carried over: the retired dark "ESPN+/Athletic" Wix theme (`custom-css-LIVE.css`) and the Newsroom and Gazette previews' Georgia headline stacks, all superseded; the Wix-hosted live logo file, which could not be fetched (the repository's own 900 × 241 wordmark, the same size the live masthead reserves, is used instead); the newsletter's MJML email templates and the TV hub page, which have their own layouts. Components are static renditions of the site's HTML and CSS patterns in `components/bundle.css`; the site renders them from vanilla JavaScript embeds, so there is no component library to build.
+## Provenance
+Extracted from `Presidente49/gatorbait-media-redesign`: `sports-live/src/front-page.css` (Gator Day look, commit `172a231`; masthead `ebcc797`), `assets/sitewide-type-condensed.css` and `docs/TYPE-STANDARD-2026-10.md`, and `assets/gameday/`. Photos in `assets/Photography` are third-party editorial images used only in previews; confirm rights before reuse. `tokens.css` is generated from `tokens.json` by `tools/build_tokens_css.py`.

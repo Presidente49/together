@@ -1,0 +1,27 @@
+<!-- @dsCard group="Brand frame" height=266 subtitle="Nav links plus the score bug. Phone shows the bug edge to edge." -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SectionNav · GatorBait Media</title>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../bundle.css">
+<style>
+  html, body { margin: 0; background: var(--paper); }
+  .pane { padding: var(--space-24) var(--space-32); }
+  .pane + .pane { border-top: var(--border-1) solid var(--rule); }
+  .gb .tagline { margin: 0 0 var(--space-12); font: 700 11px/1 var(--font-display); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-2); }
+  .bleed { margin: 0 calc(var(--space-32) * -1); }
+  .row { display: flex; flex-wrap: wrap; gap: var(--space-16); align-items: flex-start; }
+  .phone { width: 390px; height: 100px; border: var(--border-1) solid var(--rule); background: var(--paper); }
+</style>
+</head>
+<body>
+<div class="gb pane"><p class="tagline">Desktop · Gator Day</p>
+<div class="bleed"><nav class="gb-nav" aria-label="Sections"><div class="gb-nav__wrap"><div class="gb-nav__links"><a href="#" aria-current="page">Front Page</a><a href="#">Football</a><a href="#">Basketball</a><a href="#">Columnists</a><a href="#">Magazine</a><a href="#">Store</a></div><div class="gb-bug"><a class="gb-bug__last" href="#"><span class="gb-tag">REC</span><span class="gb-bug__team">FLA <strong>4-1</strong></span><span class="gb-bug__team">SC <strong>2-3</strong></span></a><a class="gb-bug__next" href="#"><span class="gb-tag">NEXT</span><span class="gb-bug__match">SC at FLA<small>Sat 12:45 PM · SEC Network</small></span></a></div></div></nav></div>
+</div><div class="gb pane"><p class="tagline">Phone · 390px · Swamp Night</p>
+<iframe class="phone" style="height:60px" title="Phone width, 390px" srcdoc="&lt;!doctype html&gt;&lt;html data-theme=&quot;night&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;../../tokens.css&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;../bundle.css&quot;&gt;&lt;style&gt;html,body{margin:0;background:var(--paper)}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;gb&quot;&gt;&lt;nav class=&quot;gb-nav&quot; aria-label=&quot;Sections&quot;&gt;&lt;div class=&quot;gb-nav__wrap&quot;&gt;&lt;div class=&quot;gb-nav__links&quot;&gt;&lt;a href=&quot;#&quot; aria-current=&quot;page&quot;&gt;Front Page&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;Football&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;Basketball&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;Columnists&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;Magazine&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;Store&lt;/a&gt;&lt;/div&gt;&lt;div class=&quot;gb-bug&quot;&gt;&lt;a class=&quot;gb-bug__last&quot; href=&quot;#&quot;&gt;&lt;span class=&quot;gb-tag&quot;&gt;REC&lt;/span&gt;&lt;span class=&quot;gb-bug__team&quot;&gt;FLA &lt;strong&gt;4-1&lt;/strong&gt;&lt;/span&gt;&lt;span class=&quot;gb-bug__team&quot;&gt;SC &lt;strong&gt;2-3&lt;/strong&gt;&lt;/span&gt;&lt;/a&gt;&lt;a class=&quot;gb-bug__next&quot; href=&quot;#&quot;&gt;&lt;span class=&quot;gb-tag&quot;&gt;NEXT&lt;/span&gt;&lt;span class=&quot;gb-bug__match&quot;&gt;SC at FLA&lt;small&gt;Sat 12:45 PM · SEC Network&lt;/small&gt;&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;/nav&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"></iframe>
+</div>
+</body>
+</html>
